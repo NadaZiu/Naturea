@@ -1,32 +1,19 @@
 import { motion } from "framer-motion"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import { useNavigate, Link } from "react-router-dom"
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext, useEffect, use } from "react"
 import { SearchContext } from "./search"
 import SearchIcon from "@mui/icons-material/Search"
-
 export const collections = [
-  {
-    id: "hair-care",
-    name: "Hair Care",
-    products: [
-      { id: 1, name: "Argan Oil", description: "100% organic oil for hair and skin", price: 20, image: "/argan1.png", image2: "/argan2.png", ingredients: ["Argan Nuts", "Vitamin E", "Omega 6"], benefits: ["Shiny hair", "Moisturizes skin", "Prevents dryness"] },
-      { id: 2, name: "Hair Serum", description: "Serum for shiny and healthy hair", price: 25, image: "/serum1.png", image2: "/serum2.png", ingredients: ["Jojoba Oil", "Keratin"], benefits: ["Smooth hair", "Strengthens roots"] },
-      { id: 3, name: "Hair Mask", description: "Deep nourishing mask for healthy hair", price: 30, image: "/hairmask1.png", image2: "/hairmask2.png", ingredients: ["Shea Butter", "Coconut Oil", "Vitamin B5"], benefits: ["Repairs damaged hair", "Softens hair", "Adds shine"] }
-    ]
-  },
-  {
-    id: "skin-care",
-    name: "Skin Care",
-    products: [
-      { id: 5, name: "Rose Water", description: "Soothing and refreshing facial toner", price: 12, image: "/rosewater1.png", image2: "/rosewater2.png", ingredients: ["Rose Extract", "Distilled Water"], benefits: ["Hydrates skin", "Reduces redness"] },
-      { id: 6, name: "Natural Cream", description: "Moisturizing cream for all skin types", price: 22, image: "/cream1.png", image2: "/cream2.png", ingredients: ["Shea Butter", "Aloe Vera", "Vitamin E"], benefits: ["Softens skin", "Nourishes deeply"] }
-    ]
-  },
   {
     id: "body-care",
     name: "Body Care",
     products: [
+      { id: 1, name: "Argan Oil", description: "100% organic oil for hair and skin", price: 20, image: "/argan1.png", image2: "/argan2.png", ingredients: ["Argan Nuts", "Vitamin E", "Omega 6"], benefits: ["Shiny hair", "Moisturizes skin", "Prevents dryness"] },
+      { id: 2, name: "Hair Serum", description: "Serum for shiny and healthy hair", price: 25, image: "/serum1.png", image2: "/serum2.png", ingredients: ["Jojoba Oil", "Keratin"], benefits: ["Smooth hair", "Strengthens roots"] },
+      { id: 3, name: "Hair Mask", description: "Deep nourishing mask for healthy hair", price: 30, image: "/hairmask1.png", image2: "/hairmask2.png", ingredients: ["Shea Butter", "Coconut Oil", "Vitamin B5"], benefits: ["Repairs damaged hair", "Softens hair", "Adds shine"] },
+      { id: 5, name: "Rose Water", description: "Soothing and refreshing facial toner", price: 12, image: "/rosewater1.png", image2: "/rosewater2.png", ingredients: ["Rose Extract", "Distilled Water"], benefits: ["Hydrates skin", "Reduces redness"] },
+      { id: 6, name: "Natural Cream", description: "Moisturizing cream for all skin types", price: 22, image: "/cream1.png", image2: "/cream2.png", ingredients: ["Shea Butter", "Aloe Vera", "Vitamin E"], benefits: ["Softens skin", "Nourishes deeply"] },
       { id: 7, name: "Body Oil", description: "Hydrating oil for soft skin", price: 20, image: "/bodyoil1.png", image2: "/bodyoil2.png", ingredients: ["Coconut Oil", "Jojoba Oil"], benefits: ["Moisturizes", "Smoothes skin"] },
       { id: 8, name: "Natural Soap", description: "Gentle cleansing soap", price: 10, image: "/soap1.png", image2: "/soap2.png", ingredients: ["Olive Oil", "Coconut Oil", "Essential Oils"], benefits: ["Cleanses skin", "Softens skin"] },
       { id: 9, name: "Body Butter", description: "Rich butter for dry skin", price: 28, image: "/bodybutter1.png", image2: "/bodybutter2.png", ingredients: ["Shea Butter", "Cocoa Butter"], benefits: ["Deeply nourishes", "Smooths rough skin"] }
@@ -70,92 +57,88 @@ export const collections = [
 ];
 
 export default function Product() {
-  const navigate = useNavigate()
-  const { search, setSearch } = useContext(SearchContext)
-  const [inputValue, setInputValue] = useState(search)
-  const [currentPage, setCurrentPage] = useState(1)
-  const perPage = 8
+  const navigate = useNavigate();
+  const { search, setSearch } = useContext(SearchContext);
+  const [inputValue, setInputValue] = useState(search);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const perPage = 8;
 
   useEffect(() => {
-    setCurrentPage(1)
-  }, [search])
+    setCurrentPage(1);
+  }, [search]);
 
-  const allProducts = collections.flatMap(col => col.products)
+  const allProducts = collections.flatMap((col) => col.products);
 
-  const filteredProducts = allProducts.filter(product =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filteredProducts = allProducts.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const startIndex = (currentPage - 1) * perPage
-  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + perPage)
+  const startIndex = (currentPage - 1) * perPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + perPage);
 
-  const handleSearch = () => {
-    setSearch(inputValue)
-  }
+  const handleSearch = () => setSearch(inputValue);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      setSearch(inputValue)
-    }
-  }
+    if (e.key === "Enter") setSearch(inputValue);
+  };
 
   return (
     <>
-      <div className="w-full bg-gradient-to-b from-[#202808] to-[#F3F3EA] py-20 text-center">
-        <div className="py-6">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="relative w-full max-w-md mx-auto flex items-center">
-              <SearchIcon onClick={handleSearch} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#FEFAE0] cursor-pointer hover:text-[#202808]" />
-              <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Search products..." className="w-full pl-10 pr-4 py-2 rounded-full bg-transparent border border-[#202808]/30 text-white placeholder-[#FEFAE0] focus:outline-none focus:ring-1 focus:ring-[#202808]/50 focus:border-[#202808]" />
-            </div>
+<div className="w-full bg-gradient-to-b from-[#202808] to-[#F3F3EA] py-14 sm:py-20 text-center">
+
+  <div className="max-w-md mx-auto relative px-4 sm:px-0">
+    <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Search products..." className="w-full pl-10 pr-10 py-2 sm:py-2.5 rounded-full bg-transparent border border-[#FEFAE0]/40 text-white placeholder-[#FEFAE0] text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-white/50" />
+    <SearchIcon onClick={handleSearch} className="absolute right-7 sm:right-3 top-1/2 -translate-y-1/2 text-[#FEFAE0] cursor-pointer hover:text-white" />
+  </div>
+
+  <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#2A1B10] mt-6 sm:mt-8">Shop</h1>
+
+  <p className="text-xs sm:text-sm text-[#5A4632] mt-2">
+    <Link to="/" className="hover:text-[#202808]">Home</Link>
+    <span className="mx-2">/</span>
+    Products
+  </p>
+
+</div>
+
+<div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16 bg-[#F3F3EA]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+
+    {paginatedProducts.map((product) => (
+      <motion.div key={product.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }} className="bg-white rounded-lg shadow overflow-hidden flex flex-col">
+
+        <div className="relative w-full h-48 sm:h-52 lg:h-56 overflow-hidden">
+          <img src={product.image} className="absolute w-full h-full object-cover" />
+          <img src={product.image2} className="absolute w-full h-full object-cover opacity-0 hover:opacity-100 transition" />
+        </div>
+
+        <div className="p-3 sm:p-4 flex flex-col flex-1">
+          <h3 className="font-semibold text-base sm:text-lg">{product.name}</h3>
+          <p className="text-xs sm:text-sm text-gray-600 flex-1 mt-1">{product.description}</p>
+
+          <div className="mt-3 sm:mt-4 flex items-center justify-between">
+            <span className="font-bold text-[#202808] text-sm sm:text-base">${product.price}</span>
+            <button onClick={() => navigate(`/product/${product.id}`)} className="bg-[#202808] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm">
+              Add to Cart
+            </button>
           </div>
         </div>
 
-        <h1 className="text-4xl font-semibold text-[#2A1B10] mb-2 py-5">Shop</h1>
+      </motion.div>
+    ))}
 
-        <p className="text-sm text-[#5A4632]">
-          <Link to="/" className="hover:text-[#202808]">Home</Link>
-          <span className="mx-2">/</span>
-          Products
-        </p>
-      </div>
+  </div>
 
-      <div className="max-w-7xl mx-auto px-6 pb-16 bg-[#F3F3EA]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {paginatedProducts.map(product => (
-            <motion.div key={product.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="relative bg-white rounded-lg shadow cursor-pointer overflow-hidden flex flex-col" onClick={() => navigate(`/product/${product.id}`)}>
-              <button className="absolute top-2 right-2 p-2 bg-white/80 rounded-full z-10" onClick={e => e.stopPropagation()}>
-                <FavoriteBorderIcon />
-              </button>
+  <div className="flex flex-wrap justify-center gap-2 mt-8 sm:mt-10">
+    {Array.from({ length: Math.ceil(filteredProducts.length / perPage) }).map((_, i) => (
+      <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1 border rounded text-sm sm:text-base ${currentPage === i + 1 ? "bg-[#202808] text-white" : "bg-white text-[#202808]"}`}>
+        {i + 1}
+      </button>
+    ))}
+  </div>
 
-              <div className="relative w-full h-56 overflow-hidden">
-                <img src={product.image} alt={product.name} className="absolute w-full h-full object-cover transition duration-500" />
-                <img src={product.image2} alt={product.name} className="absolute w-full h-full object-cover opacity-0 hover:opacity-100 transition duration-500" />
-              </div>
-
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-semibold text-lg mb-2 text-[#2A1B10]">{product.name}</h3>
-                <p className="text-sm text-[#5A4632] flex-1">{product.description}</p>
-
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold text-[#202808]">${product.price}</span>
-                  <button className="bg-[#202808] text-white px-4 py-2 rounded" onClick={e => e.stopPropagation()}>
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="flex justify-center items-center gap-2 mt-8">
-          {Array.from({ length: Math.ceil(filteredProducts.length / perPage) }).map((_, i) => (
-            <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1 border rounded ${currentPage === i + 1 ? "bg-[#202808] text-white" : "bg-white text-[#202808]"}`}>
-              {i + 1}
-            </button>
-          ))}
-        </div>
-      </div>
+</div>
     </>
-  )
+  );
 }
