@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa"
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">
 
         <div>
-          <h3 className="text-xl font-semibold mb-4">Natural Store</h3>
+          <h3 className="text-xl font-semibold mb-4">Naturéa Store</h3>
           <p className="text-sm text-[#5A4632]">We offer natural herbs, pure honey, teas, and eco-friendly products carefully selected to bring the best of nature to your home.</p>
         </div>
 
@@ -18,6 +18,8 @@ export default function Footer() {
             <li><Link to="/products/herbs" className="hover:text-[#202808]">Herbs</Link></li>
             <li><Link to="/products/body-care" className="hover:text-[#202808]">Bodycare</Link></li>
             <li><Link to="/products/honey" className="hover:text-[#202808]">Honey</Link></li>
+            <li><Link to="/products/essential-oils" className="hover:text-[#202808]">Essential Oils</Link></li>
+
           </ul>
         </div>
 
@@ -27,6 +29,7 @@ export default function Footer() {
             <li><Link to="/" className="hover:text-[#202808]">Home</Link></li>
             <li><Link to="/about" className="hover:text-[#202808]">About</Link></li>
             <li><Link to="/contact" className="hover:text-[#202808]">Contact</Link></li>
+            <li><Link to="/faq6" className="hover:text-[#202808]">FAQ</Link></li>
           </ul>
         </div>
 
@@ -34,9 +37,9 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
 
           <div className="flex gap-4 text-lg mb-4 text-[#3D4C33]">
-            <a href="#" className="hover:text-[#202808]"><FaFacebookF /></a>
+            <a href="#" className="hover:text-[#202808]"><FaFacebook /></a>
             <a href="#" className="hover:text-[#202808]"><FaInstagram /></a>
-            <a href="#" className="hover:text-[#202808]"><FaTwitter /></a>
+            <a href="#" className="hover:text-[#202808]"><FaWhatsapp /></a>
           </div>
 
           <p className="text-sm text-[#5A4632]">Follow us to discover new natural products and special offers.</p>
