@@ -97,7 +97,7 @@ useEffect(() => {
 
       <div className="flex flex-col gap-2 mt-2 text-xs sm:text-sm text-gray-500 text-center md:text-left">
         <p><strong className="text-[#202808] font-medium">Categories:</strong> {collection?.name}</p>
-        <p><strong className="text-[#202808] font-medium">Brand:</strong> Natural</p>
+        <p><strong className="text-[#202808] font-medium">Brand:</strong> Naturéa</p>
 
         <div className="flex items-center justify-center md:justify-start gap-3 mt-1">
           <strong className="text-[#202808] font-medium">Share:</strong>

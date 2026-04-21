@@ -13,7 +13,7 @@ export const collections = [
       { id: 2, name: "Hair Serum", description: "Serum for shiny and healthy hair", price: 25, image: "/serum1.png", image2: "/serum2.png", ingredients: ["Jojoba Oil", "Keratin"], benefits: ["Smooth hair", "Strengthens roots"] },
       { id: 3, name: "Hair Mask", description: "Deep nourishing mask for healthy hair", price: 30, image: "/hairmask1.png", image2: "/hairmask2.png", ingredients: ["Shea Butter", "Coconut Oil", "Vitamin B5"], benefits: ["Repairs damaged hair", "Softens hair", "Adds shine"] },
       { id: 5, name: "Rose Water", description: "Soothing and refreshing facial toner", price: 12, image: "/rosewater1.png", image2: "/rosewater2.png", ingredients: ["Rose Extract", "Distilled Water"], benefits: ["Hydrates skin", "Reduces redness"] },
-      { id: 6, name: "Natural Cream", description: "Moisturizing cream for all skin types", price: 22, image: "/cream1.png", image2: "/cream2.png", ingredients: ["Shea Butter", "Aloe Vera", "Vitamin E"], benefits: ["Softens skin", "Nourishes deeply"] },
+      { id: 6, name: "Hand Cream", description: "Moisturizing cream for all skin types", price: 22, image: "/cream1.png", image2: "/cream2.png", ingredients: ["Shea Butter", "Aloe Vera", "Vitamin E"], benefits: ["Softens skin", "Nourishes deeply"] },
       { id: 7, name: "Body Oil", description: "Hydrating oil for soft skin", price: 20, image: "/bodyoil1.png", image2: "/bodyoil2.png", ingredients: ["Coconut Oil", "Jojoba Oil"], benefits: ["Moisturizes", "Smoothes skin"] },
       { id: 8, name: "Natural Soap", description: "Gentle cleansing soap", price: 10, image: "/soap1.png", image2: "/soap2.png", ingredients: ["Olive Oil", "Coconut Oil", "Essential Oils"], benefits: ["Cleanses skin", "Softens skin"] },
       { id: 9, name: "Body Butter", description: "Rich butter for dry skin", price: 28, image: "/bodybutter1.png", image2: "/bodybutter2.png", ingredients: ["Shea Butter", "Cocoa Butter"], benefits: ["Deeply nourishes", "Smooths rough skin"] }
@@ -51,7 +51,6 @@ export const collections = [
       { id: 23, name: "Lavender", description: "Calming herb", price: 9, image: "/3.png", image2: "/4.png", ingredients: ["Lavender Flowers"], benefits: ["Relaxes mind", "Aromatherapy"] },
       { id: 24, name: "Eucalyptus", description: "Refreshing plant", price: 11, image: "/1.png", image2: "/2.png", ingredients: ["Eucalyptus Leaves"], benefits: ["Clears airways", "Refreshes skin"] },
       { id: 25, name: "Moringa", description: "Superfood plant", price: 12, image: "/moringa1.png", image2: "/moringa2.png", ingredients: ["Moringa Leaves"], benefits: ["Rich in nutrients", "Supports energy"] },
-      { id: 26, name: "Nettle", description: "Medicinal herb", price: 10, image: "/nettle1.png", image2: "/nettle2.png", ingredients: ["Nettle Leaves"], benefits: ["Supports hair growth", "Detoxifies body"] }
     ]
   }
 ];

@@ -35,7 +35,7 @@ export default function Cart() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-3 pb-6 bg-[#F3F3EA] gap-6 lg:gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-3 pb-10 bg-[#F3F3EA] gap-6 lg:gap-10">
         <div data-aos="fade-up" className="lg:col-span-2">
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left border-collapse">
