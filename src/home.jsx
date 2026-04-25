@@ -103,9 +103,9 @@ export default function Home() {
         <p className="text-[#DDDFD1] text-sm sm:text-base lg:text-lg mb-8 sm:mb-10">
           Explore our selection of pure herbs, teas, honey, and natural skincare. Feel the difference of truly natural products.
         </p>
-        <a href="/products" className="bg-[#DDDFD1] text-[#141905] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-sm font-semibold text-sm sm:text-base lg:text-lg hover:bg-white shadow-lg transition-colors duration-300">
+        <Link to="/products" className="bg-[#DDDFD1] text-[#141905] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-sm font-semibold text-sm sm:text-base lg:text-lg hover:bg-white shadow-lg transition-colors duration-300">
           Buy Now
-        </a>
+        </Link>
       </div>
     </section>
   </main>
